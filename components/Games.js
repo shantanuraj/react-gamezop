@@ -4,9 +4,12 @@
 
 'use strict'
 
-import React from 'react'
+import React, {
+    Component
+} from 'react'
 
 import Game from './Game'
+import GameView from './GameView'
 
 const styles = {
     container: {
@@ -16,16 +19,40 @@ const styles = {
     }
 }
 
-const renderGame = game => (
-    <Game key={game.code} game={game} />
-)
+class Games extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            view: 'list'
+        }
+    }
 
-const Games = (props) => {
-    return (
-        <div style={styles.container}>
-            {props.games.map(renderGame)}
-        </div>
-    )
+    onClick(selectedUrl) {
+        return () => this.setState({
+            view: 'game',
+            selectedUrl
+        })
+    }
+
+    renderList() {
+        return (
+            <div style={styles.container}>
+                {this.props.games.map(game => <Game onClick={this.onClick(game.gameUrl)} key={game.code} game={game} />)}
+            </div>
+        )
+    }
+
+    renderGameView() {
+        return <GameView uri={this.state.selectedUrl} />
+    }
+
+    render() {
+        if (this.state.view === 'list') {
+            return this.renderList()
+        } else {
+            return this.renderGameView()
+        }
+    }
 }
 
 export default Games

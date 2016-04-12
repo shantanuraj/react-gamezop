@@ -10,7 +10,7 @@ import { getCoverUrl } from '../config/utils'
 
 const Game = (props) => {
     return (
-        <div>
+        <div onClick={props.onClick}>
             <h2>{props.game.name}</h2>
             <img src={getCoverUrl(props.game.code)} />
         </div>
