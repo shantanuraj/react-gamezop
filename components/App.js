@@ -1,52 +1,24 @@
-import React, {
-    Component
-} from 'react'
+import React from 'react'
 
-import { getInitialGames } from '../service/Games'
+import Banner from './Banner'
+import InitialScene from './InitialScene'
 
-import Games from './Games'
+const styles = {
+    container: {
+        display: 'flex',
+        width: '100vw',
+        height: '100vh',
+        flex: 1,
+    },
+}
 
-class App extends Component {
-
-    constructor(props) {
-        super(props)
-        this.state = {
-            loaded: false,
-            games: null
-        }
-    }
-
-    renderLoading() {
-        return (
-            <div>
-                Loading...
-            </div>
-        )
-    }
-
-    renderLoaded() {
-        return <Games games={this.state.games} />
-    }
-
-    componentDidMount() {
-        this.getData()
-    }
-
-    getData() {
-        getInitialGames()
-        .then(games => this.setState({
-            loaded: true,
-            games
-        }))
-    }
-
-    render() {
-        if (this.state.loaded) {
-            return this.renderLoaded()
-        } else {
-            return this.renderLoading()
-        }
-    }
+const App = (props) => {
+    return (
+        <div style={styles.container}>
+            <Banner />
+            <InitialScene />
+        </div>
+    )
 }
 
 export default App

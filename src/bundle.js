@@ -20066,85 +20066,37 @@
 	    value: true
 	});
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Games = __webpack_require__(167);
+	var _Banner = __webpack_require__(172);
 
-	var _Games2 = __webpack_require__(169);
+	var _Banner2 = _interopRequireDefault(_Banner);
 
-	var _Games3 = _interopRequireDefault(_Games2);
+	var _InitialScene = __webpack_require__(173);
+
+	var _InitialScene2 = _interopRequireDefault(_InitialScene);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var App = function (_Component) {
-	    _inherits(App, _Component);
-
-	    function App(props) {
-	        _classCallCheck(this, App);
-
-	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, props));
-
-	        _this.state = {
-	            loaded: false,
-	            games: null
-	        };
-	        return _this;
+	var styles = {
+	    container: {
+	        display: 'flex',
+	        width: '100vw',
+	        height: '100vh',
+	        flex: 1
 	    }
+	};
 
-	    _createClass(App, [{
-	        key: 'renderLoading',
-	        value: function renderLoading() {
-	            return _react2.default.createElement(
-	                'div',
-	                null,
-	                'Loading...'
-	            );
-	        }
-	    }, {
-	        key: 'renderLoaded',
-	        value: function renderLoaded() {
-	            return _react2.default.createElement(_Games3.default, { games: this.state.games });
-	        }
-	    }, {
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            this.getData();
-	        }
-	    }, {
-	        key: 'getData',
-	        value: function getData() {
-	            var _this2 = this;
-
-	            (0, _Games.getInitialGames)().then(function (games) {
-	                return _this2.setState({
-	                    loaded: true,
-	                    games: games
-	                });
-	            });
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            if (this.state.loaded) {
-	                return this.renderLoaded();
-	            } else {
-	                return this.renderLoading();
-	            }
-	        }
-	    }]);
-
-	    return App;
-	}(_react.Component);
+	var App = function App(props) {
+	    return _react2.default.createElement(
+	        'div',
+	        { style: styles.container },
+	        _react2.default.createElement(_Banner2.default, null),
+	        _react2.default.createElement(_InitialScene2.default, null)
+	    );
+	};
 
 	exports.default = App;
 
@@ -20212,6 +20164,14 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	var styles = {
+	    container: {
+	        display: 'flex',
+	        flex: 1,
+	        alignItems: 'center'
+	    }
+	};
+
 	var renderGame = function renderGame(game) {
 	    return _react2.default.createElement(_Game2.default, { key: game.code, game: game });
 	};
@@ -20219,7 +20179,7 @@
 	var Games = function Games(props) {
 	    return _react2.default.createElement(
 	        'div',
-	        null,
+	        { style: styles.container },
 	        props.games.map(renderGame)
 	    );
 	};
@@ -20281,6 +20241,168 @@
 	}; /**
 	    * Utility Functions
 	    */
+
+/***/ },
+/* 172 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Left side banner
+	 */
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var styles = {
+	    banner: {
+	        display: 'flex',
+	        position: 'fixed',
+	        backgroundColor: '#37479F',
+	        height: '100vh',
+	        width: '30vw',
+	        flex: 1,
+	        alignItems: 'center',
+	        justifyContent: 'center'
+	    },
+	    content: {
+	        fontSize: 72,
+	        color: '#eee'
+	    }
+	};
+
+	var Banner = function Banner(props) {
+	    return _react2.default.createElement(
+	        'div',
+	        { style: styles.banner },
+	        _react2.default.createElement(
+	            'p',
+	            { style: styles.content },
+	            'Gamezop'
+	        )
+	    );
+	};
+
+	exports.default = Banner;
+
+/***/ },
+/* 173 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Games = __webpack_require__(167);
+
+	var _Games2 = __webpack_require__(169);
+
+	var _Games3 = _interopRequireDefault(_Games2);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var styles = {
+	    container: {
+	        display: 'flex',
+	        flex: 1,
+	        marginLeft: '30vw'
+	    },
+	    content: {
+	        fontSize: 72
+	    }
+	};
+
+	var App = function (_Component) {
+	    _inherits(App, _Component);
+
+	    function App(props) {
+	        _classCallCheck(this, App);
+
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, props));
+
+	        _this.state = {
+	            loaded: false,
+	            games: null
+	        };
+	        return _this;
+	    }
+
+	    _createClass(App, [{
+	        key: 'renderLoading',
+	        value: function renderLoading() {
+	            return _react2.default.createElement(
+	                'div',
+	                { style: styles.container },
+	                _react2.default.createElement(
+	                    'p',
+	                    { style: styles.content },
+	                    'Loading...'
+	                )
+	            );
+	        }
+	    }, {
+	        key: 'renderLoaded',
+	        value: function renderLoaded() {
+	            return _react2.default.createElement(
+	                'div',
+	                { style: styles.container },
+	                _react2.default.createElement(_Games3.default, { games: this.state.games })
+	            );
+	        }
+	    }, {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            this.getData();
+	        }
+	    }, {
+	        key: 'getData',
+	        value: function getData() {
+	            var _this2 = this;
+
+	            (0, _Games.getInitialGames)().then(function (games) {
+	                return _this2.setState({
+	                    loaded: true,
+	                    games: games
+	                });
+	            });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            if (this.state.loaded) {
+	                return this.renderLoaded();
+	            } else {
+	                return this.renderLoading();
+	            }
+	        }
+	    }]);
+
+	    return App;
+	}(_react.Component);
+
+	exports.default = App;
 
 /***/ }
 /******/ ]);
