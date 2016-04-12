@@ -13,10 +13,12 @@ const styles = {
         marginLeft: '30vw'
     },
     content: {
+        display: 'flex',
+        flex: 1,
+        alignItems: 'center',
         fontSize: 72
     }
 }
-
 
 class App extends Component {
 
