@@ -1,7 +1,5 @@
 # react-gamezop
 
-## [Demo](http://shantanuraj.github.io/react-gamezop/)
-
 ## Setup
 
     npm install
