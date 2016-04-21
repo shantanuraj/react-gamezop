@@ -14,6 +14,7 @@ import GameView from './GameView'
 const styles = {
     container: {
         display: 'flex',
+        flexDirection: 'column',
         flex: 1,
         alignItems: 'center',
     }

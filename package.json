@@ -1,13 +1,13 @@
 {
   "name": "react-gamezop",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Minimal React & Webpack demo",
+  "main": "src/main.js",
   "scripts": {
     "start": "node server & webpack --output-file bundle.js -w"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Shantanu Raj <s@sraj.me>",
+  "license": "Apache 2.0",
   "devDependencies": {
     "babel-core": "^6.7.6",
     "babel-loader": "^6.2.4",
